@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>交通灯</title>
+    <link rel="stylesheet" href="">
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin:0;
+        }
+        div{
+            width:100px;
+            height: 100px;
+            border-radius:50%;
+            border: 1px solid #666;
+            background: #ccc;
+            float: left;
+            margin:10px;
+        }
+        span{
+            line-height: 200px;
+            margin-left: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var red = document.getElementsByTagName("div")[0];
+            var yellow = document.getElementsByTagName("div")[1];
+            var green = document.getElementsByTagName("div")[2];
+            var js = document.getElementsByTagName("span")[0];
+            green.style.background="#0f0";
+            js.innerHTML=35;
+            var sj = 34;
+            myTimer1();
+                function myTimer1(){timer1=setInterval(function(){
+                       green.style.background="#0f0";
+                       red.style.background="#ccc";
+                   js.innerHTML=sj;
+                   sj--;
+                   if(sj<0){
+                       window.clearInterval(timer1)
+                       sj = 4;
+                       myTimer2();
+                   }},1000)}
+                function myTimer2(){timer2=setInterval(function(){
+                       green.style.background="#ccc";
+                       yellow.style.background="#ff0";
+                   js.innerHTML=sj;
+                   sj--;
+                   if(sj<0){
+                       window.clearInterval(timer2)
+                       sj = 35;
+                       myTimer3();
+                   }},1000)}
+               function myTimer3(){var timer3=setInterval(function(){
+                       yellow.style.background="#ccc";
+                       red.style.background="#f00";
+                   js.innerHTML=sj;
+                   sj--;
+                   if(sj<0){
+                       window.clearInterval(timer3)
+                       sj = 35;
+                       myTimer1();
+                   }},1000)}
+            }
+
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <span>00</span>
+</body>
+</html>
